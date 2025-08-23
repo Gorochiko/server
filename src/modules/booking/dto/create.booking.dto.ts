@@ -1,0 +1,26 @@
+import { IsString, IsNumber, IsOptional } from 'class-validator';
+
+
+export class CreateBookingDto {
+    @IsString()
+    email: string;
+
+    @IsString()
+    teacherId: string;
+
+    @IsString()
+    teacherName: string;
+
+    @IsString()
+    courseType: string;
+
+    @IsString()
+    @IsOptional()
+    notes?: string;
+
+     @IsOptional()
+    status?: string; // ISO string format
+
+    @IsNumber()
+    totalAmount: number;
+}
