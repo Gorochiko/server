@@ -18,13 +18,13 @@ export class Booking {
     @Prop({ required: false }) 
     transactionId?: string;
 
-    @Prop({ required: true })
+    @Prop({ required: false })
     courseType: string;
 
     @Prop({ required: true })
     totalAmount: number;
 
-    @Prop({ required: true, enum: ['pending', 'paid', 'cancelled'], default: 'pending' })
+    @Prop({ required: true, enum: ['pending', 'paid', 'cancelled', 'trial'], default: 'pending' })
     status: string;
 
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Xác nhận học thử</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9fafb;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+      h1 {
+        font-size: 22px;
+        color: #2563eb;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      p {
+        margin: 6px 0;
+        line-height: 1.5;
+      }
+      .highlight {
+        font-weight: bold;
+        color: #111827;
+      }
+      .footer {
+        margin-top: 24px;
+        font-size: 13px;
+        text-align: center;
+        color: #6b7280;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        background-color: #2563eb;
+        color: #fff !important;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background-color: #1e40af;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Xác nhận đặt lịch học thử</h1>
+
+      <p>Xin chào,</p>
+      <p>Bạn đã đăng ký học thử thành công với giáo viên <span class="highlight">{{name}}</span>.</p>
+
+      <p><strong>Thông tin đặt lịch:</strong></p>
+      <ul>
+        <li><b>Giáo viên:</b> {{name}}</li>
+        <li><b>Khóa học:</b> {{courseType}}</li>
+        <li><b>Học phí:</b> {{amount}} VND</li>
+        <li><b>Mã đặt lịch:</b> {{bookingId}}</li>
+        <li><b>Ngày đăng ký:</b> {{currentDate}}</li>
+      </ul>
+
+      <p>Vui lòng chuẩn bị trước khi buổi học thử bắt đầu. Chúng tôi sẽ liên hệ với bạn để xác nhận lịch học cụ thể.</p>
+
+      <div style="text-align:center;">
+        <a href="#" class="btn">Xem chi tiết</a>
+      </div>
+
+      <div class="footer">
+        <p>Cảm ơn bạn đã tin tưởng lựa chọn chúng tôi.</p>
+        <p>© 2025 Antoree - Nền tảng học tiếng Anh trực tuyến</p>
+      </div>
+    </div>
+  </body>
+</html>

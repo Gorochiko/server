@@ -16,4 +16,9 @@ export class BookingController {
     async confirmPayment(@Param('id') bookingId: string,  @Body('transactionId') transactionId: string,): Promise<Booking | null> {
         return this.bookingService.confirmPayment(bookingId,transactionId);
     }
+
+    @Post('trial')
+    async createTrialBooking(@Body() bookingData: CreateBookingDto): Promise<Booking> {
+        return this.bookingService.trialBooking(bookingData);
+    }
 }

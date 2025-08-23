@@ -12,15 +12,16 @@ export class CreateBookingDto {
     teacherName: string;
 
     @IsString()
-    courseType: string;
+    @IsOptional()
+    courseType?: string;
 
     @IsString()
     @IsOptional()
     notes?: string;
 
      @IsOptional()
-    status?: string; // ISO string format
-
+    status?: string; 
+    
     @IsNumber()
     totalAmount: number;
 }

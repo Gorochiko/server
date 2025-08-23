@@ -101,8 +101,6 @@ export class BookingService {
         if (!booking) {
             throw new Error('Booking not found');
         }
-
-
         const updatedBooking = await this.bookingRepository.updateBookingStatus(
             bookingId,
             'paid',
@@ -124,7 +122,39 @@ export class BookingService {
                 currentDate: new Date().toLocaleDateString('vi-VN')
             },
         });
-
         return updatedBooking;
+    }
+
+
+    async trialBooking(bookingData: CreateBookingDto): Promise<any> {
+        try {
+            if (!bookingData.email || !bookingData.teacherId || !bookingData.teacherName ) {
+                throw new Error('Missing required booking fields');
+            }
+            const newBooking = await this.bookingRepository.createBooking({
+                ...bookingData,
+                status: 'trial',
+                totalAmount: 0
+            });
+
+            const formattedAmount = new Intl.NumberFormat('vi-VN').format(newBooking.totalAmount);
+
+            await this.mailerService.sendMail({
+                to: newBooking.email,
+                subject: 'Xác nhận đặt lịch học thử',
+                template: 'trial',
+                context: {
+                    name: newBooking.teacherName,
+                    courseType: newBooking.courseType,
+                    amount: formattedAmount,
+                    bookingId: newBooking._id,
+                    currentDate: new Date().toLocaleDateString('vi-VN')
+                },
+            });
+
+            return newBooking;
+        } catch (error: any) {
+            throw new Error(`Failed to create trial booking: ${error.message}`);
+        }
     }
 }
