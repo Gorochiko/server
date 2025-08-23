@@ -6,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   app.enableCors({
-    origin: ['http://localhost:5173', 'antoree-webmvp.vercel.app'],
+    origin: ['http://localhost:5173', 'https://antoree-webmvp.vercel.app'],
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   });
