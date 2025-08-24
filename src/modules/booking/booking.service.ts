@@ -42,7 +42,11 @@ export class BookingService {
             const requestId = partnerCode + new Date().getTime();
             const orderId = requestId;
             const orderInfo = 'Payment with Momo';
-            const redirectUrl = `${process.env.MOMO_REDIRECT_URL}?bookingId=${newBooking._id}`;
+            if(process.env.NODE_ENV === 'production'){
+                process.env.MOMO_REDIRECT_URL = 'https://antoree-webmvp.vercel.app/payment-success';
+                process.env.MOMO_IPN_URL = 'https://antoree-webmvp.vercel.app/payment-success';
+            }
+            const redirectUrl = `${process.env.MOMO_REDIRECT_URL}?bookingId=${newBooking._id}` || `$https://antoree-webmvp.vercel.app/payment-success?bookingId=${newBooking._id}`;
             const ipnUrl = process.env.MOMO_IPN_URL;
             const amount = bookingData.totalAmount;
             const requestType = 'payWithMethod';
